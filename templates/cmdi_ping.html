@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Command Injection{% endblock %}
+{% block content %}
+<h2>OS Command Injection — Ping Tool</h2>
+<p>Try host: <code>127.0.0.1; cat /etc/passwd</code> or <code>127.0.0.1 && id</code></p>
+<form method="post">
+  <input type="text" name="host" value="{{ host }}" placeholder="hostname or IP">
+  <button type="submit">Ping</button>
+</form>
+{% if output %}<pre>{{ output }}</pre>{% endif %}
+{% endblock %}

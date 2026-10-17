@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Insecure Deserialization{% endblock %}
+{% block content %}
+<h2>Insecure Deserialization (pickle)</h2>
+<p>The server base64-decodes and <code>pickle.loads()</code>s your input. A crafted pickle payload with a <code>__reduce__</code> method can execute arbitrary code server-side.</p>
+<p>Benign example payload (safe dict): <code>{{ example }}</code></p>
+<form method="post">
+  <textarea name="data" rows="3" placeholder="base64 pickle data"></textarea>
+  <button type="submit">Load profile</button>
+</form>
+{% if error %}<p class="err">{{ error }}</p>{% endif %}
+{% if output %}<pre>{{ output }}</pre>{% endif %}
+{% endblock %}

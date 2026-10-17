@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Broken Auth{% endblock %}
+{% block content %}
+<h2>Broken Authentication — Trusted Client Cookie</h2>
+<p>After logging in, inspect your cookies in devtools. Try editing the <code>role</code> cookie from <code>user</code> to <code>admin</code> and reload this page.</p>
+<form method="post">
+  <input type="text" name="username" placeholder="your name">
+  <button type="submit">Remember me</button>
+</form>
+{% if message %}<p class="ok">{{ message }}</p>{% endif %}
+{% endblock %}

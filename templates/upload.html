@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}File Upload{% endblock %}
+{% block content %}
+<h2>Unrestricted File Upload</h2>
+<p>No extension/content-type validation. Try uploading a <code>.py</code>, <code>.php</code>, or <code>.html</code> file and see where it lands.</p>
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <button type="submit">Upload</button>
+</form>
+{% if message %}<p class="ok">{{ message }}</p>{% endif %}
+<h3>Uploaded files</h3>
+<ul>
+{% for f in files %}
+<li><a href="{{ url_for('uploaded_file', filename=f) }}">{{ f }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

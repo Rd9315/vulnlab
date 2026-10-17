@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Document{% endblock %}
+{% block content %}
+<h2>Document #{{ doc_id }}</h2>
+<p>Logged in as: <b>{{ session['username'] }}</b> — try changing the ID in the URL to view other users' notes.</p>
+{% if doc %}
+<div class="card">
+<h3>{{ doc['title'] }}</h3>
+<p>Owner: {{ doc['owner'] }}</p>
+<p>{{ doc['content'] }}</p>
+</div>
+{% else %}
+<p class="err">No document with that ID.</p>
+{% endif %}
+<p><a href="{{ url_for('idor_doc', doc_id=doc_id-1) }}">&larr; prev</a> | <a href="{{ url_for('idor_doc', doc_id=doc_id+1) }}">next &rarr;</a></p>
+{% endblock %}

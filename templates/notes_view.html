@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Notes Viewer{% endblock %}
+{% block content %}
+<h2>Path Traversal / LFI — Notes Viewer</h2>
+<p>Try: <code>?file=../app.py</code></p>
+<form method="get">
+  <input type="text" name="file" value="{{ filename }}">
+  <button type="submit">View</button>
+</form>
+{% if error %}<p class="err">{{ error }}</p>{% endif %}
+{% if content %}<pre>{{ content }}</pre>{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Stored XSS{% endblock %}
+{% block content %}
+<h2>Stored XSS — Comment Wall</h2>
+<p>Try posting a body like <code>&lt;img src=x onerror=alert(1)&gt;</code></p>
+<form method="post">
+  <label>Name</label>
+  <input type="text" name="author">
+  <label>Comment</label>
+  <textarea name="body" rows="3"></textarea>
+  <button type="submit">Post</button>
+</form>
+<hr>
+{% for c in comments %}
+<div class="card"><b>{{ c['author'] }}</b><br>{{ c['body']|safe }}</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}SSRF{% endblock %}
+{% block content %}
+<h2>SSRF — URL Fetcher</h2>
+<p>Try fetching an internal endpoint, e.g. <code>http://127.0.0.1:5000/notes/view?file=flag.txt</code></p>
+<form method="post">
+  <input type="text" name="url" value="{{ url }}" placeholder="http://...">
+  <button type="submit">Fetch</button>
+</form>
+{% if error %}<p class="err">{{ error }}</p>{% endif %}
+{% if content %}<pre>{{ content }}</pre>{% endif %}
+{% endblock %}

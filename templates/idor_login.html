@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}IDOR Login{% endblock %}
+{% block content %}
+<h2>IDOR — Login</h2>
+<p>Users: <code>alice</code>, <code>bob</code>, <code>admin</code> (no password check in this demo — just type a username).</p>
+<form method="post">
+  <input type="text" name="username" placeholder="alice">
+  <button type="submit">Login</button>
+</form>
+{% endblock %}

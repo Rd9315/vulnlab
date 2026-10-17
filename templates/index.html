@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}VulnLab - Challenges{% endblock %}
+{% block content %}
+<p>10 deliberately vulnerable challenges. Pick one and try to break it.</p>
+
+<div class="card"><h3>1. SQL Injection — Login Bypass</h3>
+<p>Classic login form built with string concatenation.</p>
+<a href="{{ url_for('sqli_login') }}">/sqli/login</a></div>
+
+<div class="card"><h3>1b. SQL Injection — UNION Search</h3>
+<p>Search box vulnerable to UNION-based extraction.</p>
+<a href="{{ url_for('sqli_search') }}">/sqli/search?q=</a></div>
+
+<div class="card"><h3>2. Reflected XSS</h3>
+<p>A name parameter is echoed back unescaped.</p>
+<a href="{{ url_for('xss_reflected') }}">/xss/reflected?name=</a></div>
+
+<div class="card"><h3>3. Stored XSS</h3>
+<p>A comment box stores and later renders unescaped input.</p>
+<a href="{{ url_for('xss_stored') }}">/xss/stored</a></div>
+
+<div class="card"><h3>4. OS Command Injection</h3>
+<p>A "ping" utility passes user input straight to the shell.</p>
+<a href="{{ url_for('cmdi_ping') }}">/cmdi/ping</a></div>
+
+<div class="card"><h3>5. IDOR</h3>
+<p>Log in as any user, then try viewing other users' private documents by changing the ID.</p>
+<a href="{{ url_for('idor_login') }}">/idor/login</a></div>
+
+<div class="card"><h3>6. Unrestricted File Upload</h3>
+<p>No validation on uploaded file type/extension/content.</p>
+<a href="{{ url_for('upload') }}">/upload</a></div>
+
+<div class="card"><h3>7. SSRF</h3>
+<p>Server fetches any URL you give it — including internal/loopback addresses.</p>
+<a href="{{ url_for('ssrf_fetch') }}">/ssrf/fetch</a></div>
+
+<div class="card"><h3>8. Path Traversal / LFI</h3>
+<p>A "notes" viewer reads a file parameter with no sanitization.</p>
+<a href="{{ url_for('notes_view') }}">/notes/view?file=flag.txt</a></div>
+
+<div class="card"><h3>9. Broken Authentication</h3>
+<p>A "remember me" flow trusts a client-side role cookie directly.</p>
+<a href="{{ url_for('auth_remember') }}">/auth/remember</a></div>
+
+<div class="card"><h3>10. Insecure Deserialization</h3>
+<p>Base64-encoded pickle data is deserialized server-side.</p>
+<a href="{{ url_for('deser_profile') }}">/deser/profile</a></div>
+{% endblock %}

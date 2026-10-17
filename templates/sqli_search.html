@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}SQLi Search{% endblock %}
+{% block content %}
+<h2>SQL Injection — UNION-based Extraction</h2>
+<p>Try: <code>' UNION SELECT id, username, password FROM users --</code></p>
+<form method="get">
+  <input type="text" name="q" value="{{ q }}" placeholder="search comments...">
+  <button type="submit">Search</button>
+</form>
+{% if error %}<p class="err">{{ error }}</p>{% endif %}
+<table>
+<tr><th>ID</th><th>Author</th><th>Body</th></tr>
+{% for r in results %}
+<tr><td>{{ r['id'] }}</td><td>{{ r['author'] }}</td><td>{{ r['body'] }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}
